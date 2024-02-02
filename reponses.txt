@@ -1,0 +1,30 @@
+16) Docker est une organisation basée sur de l'Open Source. Cela permet d'automatiser des tâches qui pouvaient être très longues
+avant. Avec Docker on peut déployer des containers à grande échelle de façon très rapide sans avoir de problème de dépendance sur chaque machine.
+Grace à Docker on peut déployer des containers de facon très rapide, mais également de façon isolé.
+
+17) CI - CD stands for Continuous Integration - Continuous Delivery/Continuous Deployment.
+Cela permet d'améliorer la qualité d'un code mais également la fréquence de distribution des différentes applications.
+C'est donc divisé en deux points :
+
+CI (Integration Continue) :
+Cela consiste à faire travailler plusieurs personnes sur différentes parties d'un code en simultané. 
+On a alors de nombreuses modifications de plusieurs parties du code en simultané. Une fois que les modifications sont finies
+chaque developpeur peut fusionner son travail avec celui de base pour éviter des conflits entre chaque dev.
+
+CD (Distribution Continue) :
+Une fois que les modifications ont été finies en amont on peut distribuer les modifications en temps réel avec des simples commandes.
+Cela permet d'aller beaucoup plus vite qu'avant car on devait prendre chacune des machines en cas par cas alors que désormais en une seule
+commande on peut changer directement toutes les modifications.
+
+18) Le cours était très bien structuré. J'ai bien aimé l'aspect Cours -> TD sur ce qu'on vient de voir -> Amélioration.
+Le cours était aussi très intéressant à suivre même si il aurait été plus stratégique de le faire avant certains cours.
+Intervenant très agréable et toujours à l'écoute.
+
+19) Dans le cadre d'un projet personnel avec Valentin C. nous avions auto hebergé plusieurs processus sur un PC qui est chez nous.
+Pour installer les différents services nous avions installé des services Docker (openVPN, NextCloud, ...).
+Nous n'arrivions pas à faire communiquer tous les containeurs avec les volumes et les networks donc nous avions installé simplement
+sans docker chacun des services.
+Nous voulions avoir toute une interface pour télécharger et regarder des films mais nous n'avions pas réussi à faire communiquer notre
+service deluge (outil de téléchargement Torrent) avec notre NextCloud (pour pouvoir retélecharger les films) et notre Jellyfin (serveur de films
+/ alternative OpenSource à Plex car Plex devient petit à petit payant)
+Maintenant nous allons voir pour tout repasser sur Docker.
