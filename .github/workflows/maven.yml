@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml -DskipTests
+      run: mvn -B package --file java/pom.xml -DskipTests
 # Push Image to Docker Registry
 #
 #    - name: Login to Registry
