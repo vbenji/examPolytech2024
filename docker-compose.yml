@@ -1,0 +1,63 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-exam
+    environment:
+      MYSQL_ROOT_PASSWORD: examRootPassword
+      MYSQL_DATABASE: examDatabase
+      MYSQL_USER: examUser
+      MYSQL_PASSWORD: examPassword
+    volumes:
+      - database-volume:/var/lib/mysql
+    networks:
+      - exam-network
+    healthcheck:
+      test: mysqladmin ping -h localhost
+      interval: 10s
+      timeout: 3s
+      retries: 3
+  
+  back-exam:
+    image: back-exam
+    build:
+      context: java/
+      dockerfile: Dockerfile
+    container_name: back-exam
+    depends_on:
+      mysql:
+        condition: service_healthy
+        restart: true
+    networks:
+      - exam-network
+    ports:
+      - "8448:8448"
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysql-exam:3306/examDatabase
+      - spring.datasource.username=examUser
+      - spring.datasource.password=examPassword
+    healthcheck:
+      test: curl http://localhost:8448/actuator/health
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  front-exam:
+    image: front-exam
+    build:
+      context: angular/
+      dockerfile: Dockerfile
+    container_name: front-exam
+    depends_on:
+      back-exam:
+        condition: service_healthy
+        restart: true
+    ports:
+      - "80:80"
+    environment:
+      - BACKEND_URL=http://192.168.1.105:8448
+
+volumes: 
+  database-volume:
+
+networks:
+  exam-network:
